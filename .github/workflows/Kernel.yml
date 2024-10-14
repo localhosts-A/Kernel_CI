@@ -20,8 +20,9 @@ jobs:
       - name: 源码克隆
         run: |
           git clone https://github.com/localhosts-A/kernel_xiaomi_sm8250.git -b KernelSU --depth=1
-          cd kernel_xiaomi_sm8250
 
       - name: 内核编译
-        run: bash build.sh lmi ksu
+        run: |
+          cd kernel_xiaomi_sm8250
+          bash build.sh lmi ksu
           
