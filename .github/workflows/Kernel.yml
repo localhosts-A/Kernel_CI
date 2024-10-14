@@ -1,0 +1,27 @@
+name: Kernel_CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 依赖环境
+        run: |
+          sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
+          mkdir ~/Clang
+          cd ~/Clang
+          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20241013-release/Clang-20.0.0git-20241013.tar.gz
+          tar -zxvf Clang-20.0.0git-20241013.tar.gz
+          cd ~/
+
+      - name: 源码克隆
+        run: |
+          git clone https://github.com/localhosts-A/kernel_xiaomi_sm8250.git --depth=1
+          cd kernel_xiaomi_sm8250
+
+      - name: 内核编译
+        run: bash build.sh lmi ksu
+          
