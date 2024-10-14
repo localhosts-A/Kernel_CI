@@ -11,8 +11,9 @@ jobs:
       - name: 依赖环境
         run: |
           sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
-          mkdir ~/Clang
-          cd ~/Clang
+          mkdir ~/proton-clang
+          mkdir ~/proton-clang/proton-clang-20210522
+          cd ~/proton-clang/proton-clang-20210522
           wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20241013-release/Clang-20.0.0git-20241013.tar.gz
           tar -zxvf Clang-20.0.0git-20241013.tar.gz
           cd ~/
