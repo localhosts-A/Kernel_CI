@@ -14,7 +14,7 @@ jobs:
           mkdir ~/Clang
           cd ~/Clang
           wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20241020-release/Clang-20.0.0git-20241020.tar.gz
-          tar -zxvf Clang-20.0.0git-20241013.tar.gz
+          tar -zxvf Clang-20.0.0git-20241020.tar.gz
           cd ~/
 
       - name: 源码克隆
