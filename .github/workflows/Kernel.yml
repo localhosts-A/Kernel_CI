@@ -25,4 +25,9 @@ jobs:
         run: |
           cd android_kernel_xiaomi_sm8250
           bash build.sh lmi ksu
-          
+
+      - name: 上传内核
+        uses: actions/upload-artifact@v4.5.0
+        with:
+          name: Kernel
+          path: Kernel_MIUI_lmi_anykernel3.zip
