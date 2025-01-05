@@ -13,8 +13,8 @@ jobs:
           sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
           mkdir ~/Clang
           cd ~/Clang
-          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20241020-release/Clang-20.0.0git-20241020.tar.gz
-          tar -zxvf Clang-20.0.0git-20241020.tar.gz
+          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250104-release/Clang-20.0.0git-20250104.tar.gz
+          tar -zxvf Clang-20.0.0git-20250104.tar.gz
           cd ~/
 
       - name: 源码克隆
