@@ -19,7 +19,7 @@ jobs:
 
       - name: 源码克隆
         run: |
-          git clone https://github.com/localhosts-A/kernel_xiaomi_sm8250.git --depth=1
+          git clone https://github.com/localhosts-A/android_kernel_xiaomi_sm8250.git --depth=1
 
       - name: 内核编译
         run: |
