@@ -13,7 +13,7 @@ jobs:
           sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
           mkdir ~/Clang
           cd ~/Clang
-          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250106-release/Clang-20.0.0git-20250104.tar.gz
+          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250106-release/Clang-20.0.0git-20250106.tar.gz
           tar -zxvf Clang-20.0.0git-20250106.tar.gz
           cd ~/
 
