@@ -13,21 +13,15 @@ jobs:
           sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
           mkdir ~/Clang
           cd ~/Clang
-          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250104-release/Clang-20.0.0git-20250104.tar.gz
-          tar -zxvf Clang-20.0.0git-20250104.tar.gz
+          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250106-release/Clang-20.0.0git-20250104.tar.gz
+          tar -zxvf Clang-20.0.0git-20250106.tar.gz
           cd ~/
 
       - name: 源码克隆
         run: |
-          git clone https://github.com/localhosts-A/android_kernel_xiaomi_sm8250.git --depth=1
+          git clone https://github.com/localhosts-A/android_kernel_xiaomi_sm8250.git --depth=1 -b susfs
 
       - name: 内核编译
         run: |
           cd android_kernel_xiaomi_sm8250
           bash build.sh lmi ksu
-
-      - name: 上传内核
-        uses: actions/upload-artifact@v4.5.0
-        with:
-          name: Kernel
-          path: ./Kernel.zip
