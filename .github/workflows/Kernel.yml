@@ -11,17 +11,31 @@ jobs:
       - name: 依赖环境
         run: |
           sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
-          mkdir ~/Clang
-          cd ~/Clang
-          wget https://github.com/ZyCromerZ/Clang/releases/download/20.0.0git-20250106-release/Clang-20.0.0git-20250106.tar.gz
-          tar -zxvf Clang-20.0.0git-20250106.tar.gz
+
+      - name: 工具配置
+        run: |
           cd ~/
+          wget https://mirrors.tuna.tsinghua.edu.cn/armbian-releases/_toolchain/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
+          wget https://mirrors.tuna.tsinghua.edu.cn/armbian-releases/_toolchain/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi.tar.xz
+          tar -xf gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu.tar.xz
+          tar -xf gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi.tar.xz
 
       - name: 源码克隆
         run: |
-          git clone https://github.com/localhosts-A/android_kernel_xiaomi_sm8250.git --depth=1 -b susfs
+          git clone https://github.com/localhosts-A/android_kernel_sony_msm8998.git --depth=1
 
       - name: 内核编译
         run: |
-          cd android_kernel_xiaomi_sm8250
-          bash build.sh lmi ksu
+          cd android_kernel_sony_msm8998
+          export ARCH=arm64
+          export SUBARCH=arm64
+          PATH=""$HOME"/gcc-linaro-4.9.4-2017.01-x86_64_aarch64-linux-gnu/bin:"$HOME"gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi/bin:${PATH}""
+          export KBUILD_DIFFCONFIG=poplar_dsds_diffconfig
+          make msmcortex-perf_defconfig O=out
+          make O=out
+
+      - name: 上传文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: Image-dtb
+          path: ~/android_kernel_sony_msm8998/out/arch/arm64/boot/Image-dtb
