@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: 依赖环境
         run: |
-          sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache
+          sudo apt install build-essential git curl wget bison flex zip bc cpio libssl-dev ccache python
 
       - name: 工具配置
         run: |
